@@ -8,129 +8,211 @@
 </head>
 <style>
     body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #f5f5f5; /* Fondo claro */
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: #f5f5f5; /* Fondo claro */
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* Establece el alto mínimo del cuerpo al alto de la ventana */
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #ffffff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra suave en la parte inferior del encabezado */
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo {
+        width: 250px; /* Tamaño ajustado del logotipo */
+        margin-right: 10px; /* Espacio entre los logotipos */
+    }
+
+    nav {
+        flex: 1; /* Ocupa todo el espacio restante */
+        text-align: center; /* Centrar elementos dentro de nav */
+    }
+
+    .nav-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center; /* Centrar elementos horizontalmente */
+    }
+
+    .nav-links li {
+        margin-left: 20px;
+    }
+
+    .nav-links li a {
+        display: block;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: #333;
+        background-color: #ffffff;
+        border: 1px solid #4CAF50; /* Borde sólido verde */
+        border-radius: 4px;
+        transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    }
+
+    .nav-links li a:hover {
+        background-color: #4CAF50; /* Fondo verde al pasar el mouse */
+        color: #ffffff; /* Texto blanco al pasar el mouse */
+        border-color: #4CAF50; /* Borde verde al pasar el mouse */
+    }
+
+    .menu-section {
+        padding: 40px 20px;
+        text-align: center;
+        background-color: #c1e1c1; /* Color verde pastel */
+        display: flex;
+        flex-wrap: wrap; /* Envuelve los elementos del menú */
+        justify-content: center; /* Centra los elementos horizontalmente */
+    }
+
+    .menu-section h1 {
+        margin-bottom: 40px;
+        color: #333;
+    }
+
+    .menu-item {
+        background-color: white;
+        margin: 20px;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 250px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.3s;
+        cursor: pointer;
+    }
+
+    .menu-item:hover {
+        transform: translateY(-5px); /* Efecto de elevación sutil al pasar el mouse */
+    }
+
+    .menu-item a {
+        text-decoration: none;
+        color: inherit;
+        text-align: center;
+    }
+
+    .menu-img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+
+    .menu-item h3 {
+        margin: 0;
+        color: #333;
+    }
+
+    /* Modal styles */
+    .modal {
+        display: none; 
+        position: fixed; 
+        z-index: 1; 
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100%; 
+        overflow: auto; 
+        background-color: rgb(0,0,0); 
+        background-color: rgba(0,0,0,0.4); 
+        padding-top: 60px; 
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto; 
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 600px;
+        border-radius: 8px;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .option-item {
+        background-color: #f9f9f9;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 10px;
+        text-align: left;
+    }
+
+    .option-item h3 {
+        margin: 0;
+        color: #333;
+    }
+
+    .quantity-input {
+        width: 50px;
+    }
+    .salsas-container {
     display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Establece el alto mínimo del cuerpo al alto de la ventana */
-
+    flex-wrap: wrap;
+    margin-top: 10px;
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra suave en la parte inferior del encabezado */
-}
+.confirm-btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+  }
 
-.logo-container {
-    display: flex;
-    align-items: center;
-}
+  .confirm-btn:hover {
+      background-color: #0056b3;
+  }
+  footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: auto; /* Esto empuja el footer al final del contenedor flex */
+        }
 
-.logo {
-    width: 250px; /* Tamaño ajustado del logotipo */
-    margin-right: 10px; /* Espacio entre los logotipos */
-}
-
-nav {
-    flex: 1; /* Ocupa todo el espacio restante */
-    text-align: center; /* Centrar elementos dentro de nav */
-}
-
-.nav-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center; /* Centrar elementos horizontalmente */
-}
-
-.nav-links li {
-    margin-left: 20px;
-}
-
-.nav-links li a {
-    display: block;
-    padding: 10px 20px;
-    text-decoration: none;
-    color: #333;
-    background-color: #ffffff;
-    border: 1px solid #4CAF50; /* Borde sólido verde */
-    border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-}
-
-.nav-links li a:hover {
-    background-color: #4CAF50; /* Fondo verde al pasar el mouse */
-    color: #ffffff; /* Texto blanco al pasar el mouse */
-    border-color: #4CAF50; /* Borde verde al pasar el mouse */
-}
-
-
-.menu-section {
-    padding: 40px 20px;
-    text-align: center;
-    background-color: #c1e1c1; /* Color verde pastel */
-    display: flex;
-    flex-wrap: wrap; /* Envuelve los elementos del menú */
-    justify-content: center; /* Centra los elementos horizontalmente */
-}
-
-.menu-section h1 {
-    margin-bottom: 40px;
-    color: #333;
-}
-
-.menu-item {
-    background-color: white;
-    margin: 20px;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 250px;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.3s;
-}
-
-.menu-item:hover {
-    transform: translateY(-5px); /* Efecto de elevación sutil al pasar el mouse */
-}
-
-.menu-item a {
-    text-decoration: none;
-    color: inherit;
-    text-align: center;
-}
-
-.menu-img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-
-.menu-item h3 {
-    margin: 0;
-    color: #333;
-}
-
-
-footer {
-    text-align: center;
-    padding: 10px 0;
-    background-color: #333;
-    color: white;
-    margin-top: auto; /* Empuja el footer al fondo de la página */
-}
 
 </style>
 <body>
@@ -150,42 +232,431 @@ footer {
 
     <main>
         <section class="menu-section">
-            <div class="menu-item">
-                <a href="comida.html">
-                    <img src="burrito.png" alt="Burritos" class="menu-img">
-                    <h3>Burritos</h3>
-                </a>
+            <div class="menu-item" onclick="showModal('burritoModal')">
+                <img src="burrito.png" alt="Burritos" class="menu-img">
+                <h3>Burritos</h3>
             </div>
-            <div class="menu-item">
-                <a href="hambu.png">
-                    <img src="hambu.png" alt="hamburguesas" class="menu-img">
-                    <h3>hamburguesas</h3>
-                </a>
+            <div class="menu-item" onclick="showModal('hamburguesaModal')">
+                <img src="hambu.png" alt="Hamburguesas" class="menu-img">
+                <h3>Hamburguesas</h3>
             </div>
-            <div class="menu-item">
-                <a href="bebidas.htm">
+            <div class="menu-item" onclick="showModal('sandwichModal')">
                     <img src="sand.png" alt="Sandwich" class="menu-img">
                     <h3>Sandwich</h3>
                 </a>
             </div>
-            <div class="menu-item">
-                <a href="snacks.ht">
-                    <img src="quesadilla.png" alt="quesadilla" class="menu-img">
+            <div class="menu-item" onclick="showModal('quesadillaModal')">
+                    <img src="quesadilla.png" alt="Quesadillas" class="menu-img">
                     <h3>Quesadillas</h3>
                 </a>
             </div>
-            <div class="menu-item">
-                <a href="snacks.ht">
+            <div class="menu-item" onclick="showModal('bonelessModal')">
                     <img src="boneles.png" alt="Boneless" class="menu-img">
                     <h3>Boneless</h3>
                 </a>
             </div>
             <br>
         </section>
+
+        <!-- Modal para Burritos -->
+        <div id="burritoModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('burritoModal')">&times;</span>
+                <h2>Opciones de Burritos</h2>
+                <div class="option-item">
+                    <h3>Burrito de Deshebrada Rojo</h3>
+                    <p>Precio: $25.00</p>
+                    <label>
+                        <input type="number" class="quantity-input" name="burrito-deshebrada-rojo" min="0" value="0"> Cantidad
+                    </label>
+                </div>
+                <div class="option-item">
+                    <h3>Burrito de Deshebrada Verde</h3>
+                    <p>Precio: $25.00</p>
+                    <label>
+                        <input type="number" class="quantity-input" name="burrito-deshebrada-verde" min="0" value="0"> Cantidad
+                    </label>
+                </div>
+                <div class="option-item">
+                    <h3>Burrito de Asado</h3>
+                    <p>Precio: $30.00</p>
+                    <label>
+                        <input type="number" class="quantity-input" name="burrito-asado" min="0" value="0"> Cantidad
+                    </label>
+                </div>
+                <div class="option-item">
+                    <h3>Burrito de Prensado Chicharrón</h3>
+                    <p>Precio: $30.00</p>
+                    <label>
+                        <input type="number" class="quantity-input" name="burrito-prensado-chicharron" min="0" value="0"> Cantidad
+                    </label>
+                </div>
+                <div class="option-item">
+                    <h3>Burrito de Discada</h3>
+                    <p>Precio: $25.00</p>
+                    <label>
+                        <input type="number" class="quantity-input" name="burrito-discada" min="0" value="0"> Cantidad
+                    </label>
+                </div>
+                <button class="confirm-btn" id="confirm-btn-burrito" disabled onclick="submitBurritoSelection()">Agregar al Carrito</button>
+
+            </div>
+        </div>
+
+        <!-- Modal para Hamburguesas -->
+        <div id="hamburguesaModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('hamburguesaModal')">&times;</span>
+                <h2>Opciones de Hamburguesas</h2>
+                <div class="option-item">
+                    <h3>Hamburguesa Sencilla</h3>
+                    <p>Precio: $35.00</p>
+                    <label>
+                        <input type="number" class="quantity-input" name="hamburguesa-sencilla" min="0" value="0"> Cantidad
+                    </label>
+                </div>
+                <div class="option-item">
+                    <h3>Hamburguesa Doble Carne</h3>
+                    <p>Precio: $45.00</p>
+                    <label>
+                        <input type="number" class="quantity-input" name="hamburguesa-doble-carne" min="0" value="0"> Cantidad
+                    </label>
+                </div>
+                <div class="option-item">
+                    <h3>Hamburguesa de Pollo Empanizado</h3>
+                    <p>Precio: $40.00</p>
+                    <label>
+                        <input type="number" class="quantity-input" name="hamburguesa-pollo-empanizado" min="0" value="0"> Cantidad
+                    </label>
+                </div>
+                <div class="option-item">
+                    <h3>Hamburguesa en Combo: Papas y Soda</h3>
+                    <p>Precio: $50.00</p>
+                    <label>
+                        <input type="number" class="quantity-input" name="hamburguesa-combo" min="0" value="0"> Cantidad
+                    </label>
+                </div>
+                <button  class="confirm-btn" id="confirm-btn" disabled onclick="submitHamburguesaSelection()">Agregar al Carrito</button>
+            </div>
+        </div>
+        <!-- Modal de Sandwich -->
+<div id="sandwichModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeSandwichModal()">&times;</span>
+        <h2>Opciones de Sandwich</h2>
+        <div class="option-item">
+            <h3>Pollo a la Plancha</h3>
+            <p>Precio: $40.00</p>
+            <label>
+                <input type="number" class="quantity-input" name="sandwich-pollo" min="0" value="0"> Cantidad
+            </label>
+        </div>
+        <div class="option-item">
+            <h3>Jamón con Queso</h3>
+            <p>Precio: $25.00</p>
+            <label>
+                <input type="number" class="quantity-input" name="sandwich-jamon-queso" min="0" value="0"> Cantidad
+            </label>
+        </div>
+        <button  class="confirm-btn" id="confirm-btn" disabled onclick="submitSandwichSelection()">Agregar al Carrito</button>
+    </div>
+</div>
+
+<!-- Modal de Quesadillas -->
+<div id="quesadillaModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeQuesadillaModal()">&times;</span>
+        <h2>Opciones de Quesadillas</h2>
+        <div class="option-item">
+            <h3>Quesadilla Sencilla</h3>
+            <p>Precio: $20.00</p>
+            <label>
+                <input type="number" class="quantity-input" name="quesadilla-sencilla" min="0" value="0"> Cantidad
+            </label>
+        </div>
+        <div class="option-item">
+            <h3>Quesadilla con Jamón</h3>
+            <p>Precio: $25.00</p>
+            <label>
+                <input type="number" class="quantity-input" name="quesadilla-jamon" min="0" value="0"> Cantidad
+            </label>
+        </div>
+        <div class="option-item">
+            <h3>Quesadilla Montada</h3>
+            <p>Precio: $35.00</p>
+            <label>
+                <input type="number" class="quantity-input" name="quesadilla-montada" min="0" value="0"> Cantidad
+            </label>
+        </div>
+        <button  class="confirm-btn" id="confirm-btn" disabled onclick="submitQuesadillaSelection()">Agregar al Carrito</button>
+    </div>
+</div>
+
+    <!-- Modal de Boneless -->
+        <div id="bonelessModal" class="modal">
+         <div class="modal-content">
+        <span class="close" onclick="closeBonelessModal()">&times;</span>
+        <h2>Opciones de Boneless</h2>
+        <div class="option-item">
+            <h3>Boneless Sencillos</h3>
+            <p>Precio: $60.00</p>
+            <label>
+                <input type="number" class="quantity-input" name="boneless-sencillos" min="0" value="0"> Cantidad
+            </label>
+        </div>
+        <div class="option-item">
+            <h3>Boneless con Papas y Soda</h3>
+            <p>Precio: $100.00</p>
+            <label>
+                <input type="number" class="quantity-input" name="boneless-papas-salsa" min="0" value="0"> Cantidad
+            </label>
+        </label>
+        <div class="salsas-container">
+            <label><input type="checkbox" name="salsa-bufalo"> Salsa Bufalo</label>
+            <label><input type="checkbox" name="salsa-habanero"> Salsa Habanero</label>
+            <label><input type="checkbox" name="salsa-bbq"> Salsa BBQ</label>
+            <label><input type="checkbox" name="salsa-luisinana"> Salsa Luisiana</label>
+        </div>
+    </div>
+        <button  class="confirm-btn" id="confirm-btn" disabled onclick="submitBonelessSelection()">Agregar al carrito</button>
+</div>
+
     </main>
 
     <footer>
-        <p>&copy; 2024 ToroCafe. Todos los derechos reservados.</p>
+        <img src="piepagina.jpeg"
+        width="1300"
+    height="100"/>
     </footer>
+    <script>
+        function showModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        function submitBurritoSelection() {
+            const burritoDeshebradaRojo = document.querySelector('input[name="burrito-deshebrada-rojo"]').value;
+            const burritoDeshebradaVerde = document.querySelector('input[name="burrito-deshebrada-verde"]').value;
+            const burritoAsado = document.querySelector('input[name="burrito-asado"]').value;
+            const burritoPrensadoChicharron = document.querySelector('input[name="burrito-prensado-chicharron"]').value;
+            const burritoDiscada = document.querySelector('input[name="burrito-discada"]').value;
+
+            let selectedBurritos = [];
+
+            if (burritoDeshebradaRojo > 0) {
+                selectedBurritos.push(`Burrito de Deshebrada Rojo: ${burritoDeshebradaRojo}`);
+            }
+            if (burritoDeshebradaVerde > 0) {
+                selectedBurritos.push(`Burrito de Deshebrada Verde: ${burritoDeshebradaVerde}`);
+            }
+            if (burritoAsado > 0) {
+                selectedBurritos.push(`Burrito de Asado: ${burritoAsado}`);
+            }
+            if (burritoPrensadoChicharron > 0) {
+                selectedBurritos.push(`Burrito de Prensado Chicharrón: ${burritoPrensadoChicharron}`);
+            }
+            if (burritoDiscada > 0) {
+                selectedBurritos.push(`Burrito de Discada: ${burritoDiscada}`);
+            }
+
+            if (selectedBurritos.length > 0) {
+                alert("Has seleccionado: \n" + selectedBurritos.join("\n"));
+            } else {
+                alert("No has seleccionado ningún burrito.");
+            }
+
+            closeModal();
+        }
+        function showHamburguesaModal() {
+        document.getElementById("hamburguesaModal").style.display = "block";
+    }
+
+    function closeHamburguesaModal() {
+        document.getElementById("hamburguesaModal").style.display = "none";
+    }
+
+    function submitHamburguesaSelection() {
+        const hamburguesaSencilla = document.querySelector('input[name="hamburguesa-sencilla"]').value;
+        const hamburguesaDobleCarne = document.querySelector('input[name="hamburguesa-doble-carne"]').value;
+        const hamburguesaPolloEmpanizado = document.querySelector('input[name="hamburguesa-pollo-empanizado"]').value;
+        const hamburguesaCombo = document.querySelector('input[name="hamburguesa-combo"]').value;
+
+        let selectedHamburguesas = [];
+
+        if (hamburguesaSencilla > 0) {
+            selectedHamburguesas.push(`Hamburguesa Sencilla: ${hamburguesaSencilla}`);
+        }
+        if (hamburguesaDobleCarne > 0) {
+            selectedHamburguesas.push(`Hamburguesa Doble Carne: ${hamburguesaDobleCarne}`);
+        }
+        if (hamburguesaPolloEmpanizado > 0) {
+            selectedHamburguesas.push(`Hamburguesa de Pollo Empanizado: ${hamburguesaPolloEmpanizado}`);
+        }
+        if (hamburguesaCombo > 0) {
+            selectedHamburguesas.push(`Hamburguesa en Combo: Papas y Soda: ${hamburguesaCombo}`);
+        }
+
+        if (selectedHamburguesas.length > 0) {
+            alert("Has seleccionado: \n" + selectedHamburguesas.join("\n"));
+        } else {
+            alert("No has seleccionado ninguna hamburguesa.");
+        }
+
+        closeHamburguesaModal();
+    }
+    // Funciones para mostrar y ocultar modales de Sandwich
+    function showSandwichModal() {
+        document.getElementById("sandwichModal").style.display = "block";
+    }
+
+    function closeSandwichModal() {
+        document.getElementById("sandwichModal").style.display = "none";
+    }
+
+    // Función para procesar la selección de Sandwich
+    function submitSandwichSelection() {
+        const sandwichPollo = document.querySelector('input[name="sandwich-pollo"]').value;
+        const sandwichJamonQueso = document.querySelector('input[name="sandwich-jamon-queso"]').value;
+
+        let selectedSandwiches = [];
+
+        if (sandwichPollo > 0) {
+            selectedSandwiches.push(`Sandwich de Pollo a la Plancha: ${sandwichPollo}`);
+        }
+        if (sandwichJamonQueso > 0) {
+            selectedSandwiches.push(`Sandwich de Jamón con Queso: ${sandwichJamonQueso}`);
+        }
+
+        if (selectedSandwiches.length > 0) {
+            alert("Has seleccionado: \n" + selectedSandwiches.join("\n"));
+        } else {
+            alert("No has seleccionado ningún sandwich.");
+        }
+
+        closeSandwichModal();
+    }
+
+    // Funciones para mostrar y ocultar modales de Quesadillas
+    function showQuesadillaModal() {
+        document.getElementById("quesadillaModal").style.display = "block";
+    }
+
+    function closeQuesadillaModal() {
+        document.getElementById("quesadillaModal").style.display = "none";
+    }
+
+    // Función para procesar la selección de Quesadillas
+    function submitQuesadillaSelection() {
+        const quesadillaSencilla = document.querySelector('input[name="quesadilla-sencilla"]').value;
+        const quesadillaJamon = document.querySelector('input[name="quesadilla-jamon"]').value;
+        const quesadillaMontada = document.querySelector('input[name="quesadilla-montada"]').value;
+
+        let selectedQuesadillas = [];
+
+        if (quesadillaSencilla > 0) {
+            selectedQuesadillas.push(`Quesadilla Sencilla: ${quesadillaSencilla}`);
+        }
+        if (quesadillaJamon > 0) {
+            selectedQuesadillas.push(`Quesadilla con Jamón: ${quesadillaJamon}`);
+        }
+        if (quesadillaMontada > 0) {
+            selectedQuesadillas.push(`Quesadilla Montada: ${quesadillaMontada}`);
+        }
+
+        if (selectedQuesadillas.length > 0) {
+            alert("Has seleccionado: \n" + selectedQuesadillas.join("\n"));
+        } else {
+            alert("No has seleccionado ninguna quesadilla.");
+        }
+
+        closeQuesadillaModal();
+    }
+
+    // Funciones para mostrar y ocultar modales de Boneless
+    function showBonelessModal() {
+        document.getElementById("bonelessModal").style.display = "block";
+    }
+
+    function closeBonelessModal() {
+        document.getElementById("bonelessModal").style.display = "none";
+    }
+
+    // Función para procesar la selección de Boneless
+    function submitBonelessSelection() {
+        const bonelessSencillos = document.querySelector('input[name="boneless-sencillos"]').value;
+        const bonelessPapasSalsa = document.querySelector('input[name="boneless-papas-salsa"]').value;
+
+        let selectedBoneless = [];
+
+        if (bonelessSencillos > 0) {
+            selectedBoneless.push(`Boneless Sencillos: ${bonelessSencillos}`);
+        }
+        if (bonelessPapasSalsa > 0) {
+            const salsas = [];
+            if (document.querySelector('input[name="salsa-bufalo"]').checked) {
+                salsas.push("Salsa Bufalo");
+            }
+            if (document.querySelector('input[name="salsa-habanero"]').checked) {
+                salsas.push("Salsa Habanero");
+            }
+            if (document.querySelector('input[name="salsa-bbq"]').checked) {
+                salsas.push("Salsa BBQ");
+            }
+            if (document.querySelector('input[name="salsa-luisinana"]').checked) {
+                salsas.push("Salsa Luisiana");
+            }
+
+            selectedBoneless.push(`Boneless con Papas y Soda (${salsas.join(", ")}): ${bonelessPapasSalsa}`);
+        }
+
+        if (selectedBoneless.length > 0) {
+            alert("Has seleccionado: \n" + selectedBoneless.join("\n"));
+        } else {
+            alert("No has seleccionado ningún boneless.");
+        }
+        
+
+        closeBonelessModal();
+    }
+
+    // Cerrar modales al hacer clic fuera de ellos
+    window.onclick = function(event) {
+        const sandwichModal = document.getElementById("sandwichModal");
+        const quesadillaModal = document.getElementById("quesadillaModal");
+        const bonelessModal = document.getElementById("bonelessModal");
+
+        if (event.target == sandwichModal) {
+            sandwichModal.style.display = "none";
+        }
+        if (event.target == quesadillaModal) {
+            quesadillaModal.style.display = "none";
+        }
+        if (event.target == bonelessModal) {
+            bonelessModal.style.display = "none";
+        }
+    }
+
+
+    // Cerrar modal al hacer clic fuera de él
+    window.onclick = function(event) {
+        const hamburguesaModal = document.getElementById("hamburguesaModal");
+        if (event.target == hamburguesaModal) {
+            hamburguesaModal.style.display = "none";
+        }
+    }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        
+
+    </script>
 </body>
 </html>
