@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú - ToroCafe Ensaladas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f5f5f5; /* Fondo claro */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Establece el alto mínimo del cuerpo al alto de la ventana */
+
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra suave en la parte inferior del encabezado */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 250px; /* Tamaño ajustado del logotipo */
+    margin-right: 10px; /* Espacio entre los logotipos */
+}
+
+nav {
+    flex: 1; /* Ocupa todo el espacio restante */
+    text-align: center; /* Centrar elementos dentro de nav */
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Centrar elementos horizontalmente */
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links li a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+    background-color: #ffffff;
+    border: 1px solid #4CAF50; /* Borde sólido verde */
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.nav-links li a:hover {
+    background-color: #4CAF50; /* Fondo verde al pasar el mouse */
+    color: #ffffff; /* Texto blanco al pasar el mouse */
+    border-color: #4CAF50; /* Borde verde al pasar el mouse */
+}
+
+
+.menu-section {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #c1e1c1; /* Color verde pastel */
+    display: flex;
+    flex-wrap: wrap; /* Envuelve los elementos del menú */
+    justify-content: center; /* Centra los elementos horizontalmente */
+}
+
+.menu-section h1 {
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.menu-item {
+    background-color: white;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 250px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px); /* Efecto de elevación sutil al pasar el mouse */
+}
+
+.menu-item a {
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+}
+
+.menu-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.menu-item h3 {
+    margin: 0;
+    color: #333;
+}
+
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #333;
+    color: white;
+    margin-top: auto; /* Empuja el footer al fondo de la página */
+}
+
+.ingredient-form {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .ingredient-form label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .ingredient-form select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 15px;
+        font-size: 16px;
+    }
+
+    .ingredient-form button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .ingredient-form button:hover {
+        background-color: #45a049;
+    }
+</style>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="logo.jpg" alt="ToroCafe" class="logo">
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="menu.html">Menú</a></li>
+                <li><a href="promociones.html">Promociones</a></li>
+            </ul>
+        </nav>
+        <img src="Picture1.png" alt="Picture1" class="logo">
+    </header>
+
+    <main>
+        <section class="menu-section">
+            <div class="menu-item">
+                <a href="ensalada-clasica.html">
+                    <img src="ensaladas.png" alt="Ensalada Clásica" class="menu-img">
+                    <h3>Ensalada Clásica</h3>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="ensalada-pollo.html">
+                    <img src="enpollo.avif" alt="Ensalada con Pollo" class="menu-img">
+                    <h3>Ensalada con Pollo</h3>
+                </a>
+            </div>
+        </section>
+
+        <!-- Formulario para seleccionar ingredientes -->
+        <section class="ingredient-form">
+            <h2>Seleccione sus ingredientes:</h2>
+            <form action="procesar_ingrediente.php" method="post">
+                <label for="ingredientes">Ingredientes:</label>
+                <select name="ingredientes" id="ingredientes">
+                    <option value="lechuga">Lechuga</option>
+                    <option value="tomate">Tomate</option>
+                    <option value="zanahoria">Zanahoria</option>
+                    <option value="pepino">Pepino</option>
+                    <option value="aceitunas">Aceitunas</option>
+                    <option value="queso">Queso</option>
+                </select>
+
+                <button type="submit">Agregar al carrito</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 ToroCafe. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
